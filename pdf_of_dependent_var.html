@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Untitled1</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>pdf_of_dependent_var</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11784,7 +11784,8 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="&#23548;&#35835;">&#23548;&#35835;<a class="anchor-link" href="#&#23548;&#35835;">&#182;</a></h2><p><a href="https://mp.weixin.qq.com/s?__biz=MzA5NzQyNTcxMA==&amp;mid=2656430899&amp;idx=1&amp;sn=3b2f60df6ec181c12cad53f5eba99dee&amp;chksm=8b004b72bc77c2644696fdfc09e3c4bf5541e4b4dc75e5e834a628fddb49be31c75f598a9c52&amp;scene=38#wechat_redirect">Hulu机器学习问题与解答系列地三十讲“常见的采样方法”</a>中提到：</p>
-<p>“很多分布一般不好直接进行采样，此时可以考虑函数变换法。一般地，如果随机变量x和u存在变换关系u＝φ(x)，则它们的概率密度函数有如下关系：p(u)|φ'(x)|＝p(x)。因此，如果从目标分布p(x)中不好采样x，可以构造一个变换u＝φ(x)，使得从变换后的分布p(u)中采样u比较容易，这样可以通过先对u进行采样然后通过反函数x＝φ-1(u)来间接得到x。”</p>
+
+<pre><code>很多分布一般不好直接进行采样，此时可以考虑函数变换法。一般地，如果随机变量x和u存在变换关系u＝φ(x)，则它们的概率密度函数有如下关系：p(u)|φ'(x)|＝p(x)。因此，如果从目标分布p(x)中不好采样x，可以构造一个变换u＝φ(x)，使得从变换后的分布p(u)中采样u比较容易，这样可以通过先对u进行采样然后通过反函数x＝φ-1(u)来间接得到x。</code></pre>
 
 </div>
 </div>
@@ -11826,7 +11827,7 @@ div#notebook {
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[6]:</div>
+<div class="prompt input_prompt">In&nbsp;[1]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>x <span class="o">=</span> <span class="kp">seq</span><span class="p">(</span><span class="m">0.001</span><span class="p">,</span> <span class="m">1</span><span class="p">,</span> <span class="m">0.001</span><span class="p">)</span>
@@ -11861,7 +11862,7 @@ y <span class="o">=</span> x<span class="o">^</span><span class="m">2</span>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[76]:</div>
+<div class="prompt input_prompt">In&nbsp;[2]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span><span class="c1"># 此处计算的是密度，并不是概率密度</span>
@@ -11882,7 +11883,7 @@ density <span class="o">=</span> <span class="kr">function</span> <span class="p
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[78]:</div>
+<div class="prompt input_prompt">In&nbsp;[3]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>density<span class="p">(</span>y<span class="p">,</span> <span class="m">0.02</span><span class="p">)</span>
@@ -11951,7 +11952,7 @@ density <span class="o">=</span> <span class="kr">function</span> <span class="p
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[81]:</div>
+<div class="prompt input_prompt">In&nbsp;[4]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-r"><pre><span></span>dy <span class="o">=</span> <span class="kt">c</span><span class="p">()</span>
@@ -12037,7 +12038,7 @@ p_y(y)=\frac{d_y(y)}{Z_y}=\frac{(f^{-1}(y))'d_x(f^{-1}(y))}{Z_x}
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>下面证明 $p_y(y)=(f^{-1}(y))'p_x(f^{-1}(y))$ 。</p>
-<p>设 $F_x(x) = \int_{-\infty}^{x}p_x(x)dx = P(X \leq x)$ 。</p>
+<p>设 $F_x(x) = \int_{-\infty}^{x}p_x(x)dx = P(X \leq x)$ （累积分布函数）。</p>
 <p>则，$F_y(y)=P(Y \leq y)=P(f(X) \leq y)=P(X \leq f^{-1}(y))=F_x(f^{-1}(y))$ 。</p>
 <p>然而，$F_y(y) = \int_{-\infty}^{y}p_y(y)dy$，所以 $p_y(y)=F_y'(y)$。</p>
 <p>最后 $p_y(y) = \frac{d}{d y} F_y(y) = \frac{d}{d y} F_x(f^{-1}(y)) = (f^{-1}(y))'F_x'(f^{-1}(y)) = (f^{-1}(y))'p_x(f^{-1}(y))$ 。</p>
