@@ -12037,7 +12037,7 @@ p_y(y)=\frac{d_y(y)}{Z_y}=\frac{(f^{-1}(y))'d_x(f^{-1}(y))}{Z_x}
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>下面证明 $p_y(y)=(f^{-1}(y))'p_x(f^{-1}(y))$ 。</p>
+<p>下面证明 $p_y(y)=(f^{-1}(y))'p_x(f^{-1}(y))$（参考 <a href="https://math.stackexchange.com/questions/2101317/probability-density-function-of-dependent-random-variable">spaceisdarkgreen 在 stackexchange 的回答</a>）。</p>
 <p>设 $F_x(x) = \int_{-\infty}^{x}p_x(x)dx = P(X \leq x)$ （累积分布函数）。</p>
 <p>则，$F_y(y)=P(Y \leq y)=P(f(X) \leq y)=P(X \leq f^{-1}(y))=F_x(f^{-1}(y))$ 。</p>
 <p>然而，$F_y(y) = \int_{-\infty}^{y}p_y(y)dy$，所以 $p_y(y)=F_y'(y)$。</p>
