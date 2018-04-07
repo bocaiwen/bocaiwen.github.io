@@ -11996,7 +11996,7 @@ in_square_F <span class="o">=</span> <span class="kr">function</span><span class
 <h2 id="&#25509;&#21463;&#29575;">&#25509;&#21463;&#29575;<a class="anchor-link" href="#&#25509;&#21463;&#29575;">&#182;</a></h2><p>因为方法中有一定的概率抛弃采样出的点，所以接受率就比较重要了。如果接受率太低，那这个算法的效率就没法<strong>接受</strong>。</p>
 <p>接受率是：$p(accept) = \int{\frac{\widetilde{p}(x)}{Mq(x)}q(x)}dx = \frac{1}{M}\int{\widetilde{p}(x)}dx$ 。其中 $M$ 是一个大于等于 $Z$ 的值，$Z$ 即最开始定义的 $\int{\widetilde{p}(x)}dx$。</p>
 <p>理论上 $M = Z$ 的时候，也就是 $q(x) = p(x)$ 的时候 $p(accept) = 1$。</p>
-<p>实际上，这个接受率是 $\widetilde{p}(x)$ 下的面积（高维情况下是体积）与 $Mq(x)$ 下的面积之比。由于细微的差别在高维情况下会被指数倍放大，所以变量多的时候，接受率会非常低。导致 Accept-Reject Sampling 只适用于一维和二维的情况，或者在其他采样方法中作为一个子步骤（参考 <a href="https://www.microsoft.com/en-us/research/people/cmbishop/">PRML</a> 11.1.3）。</p>
+<p>实际上，这个接受率是 $\widetilde{p}(x)$ 下的面积（高维情况下是体积）与 $Mq(x)$ 下的面积之比。由于细微的差别在高维情况下会被指数倍放大，所以变量多的时候，接受率会非常低。导致 Accept-Reject Sampling 只适用于一维和二维的情况，或者在其他采样方法中作为一个子步骤（参考 <a href="https://www.amazon.com/Pattern-Recognition-Learning-Information-Statistics/dp/0387310738">PRML</a> 11.1.3）。</p>
 
 </div>
 </div>
