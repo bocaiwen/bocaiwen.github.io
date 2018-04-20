@@ -11850,9 +11850,9 @@ $$
                                  &amp; = min(\pi(x^{*})q(x \mid x^{*}), \pi(x)q(x^{*} \mid x))\\
                                  &amp; = \pi(x^{*})q(x \mid x^{*})A(x, x^{*})
 \end{align}
-（第一步是带入 A，第二部是交换位置，第三步是提取出 A）。</p>
+（第一步是带入 A，第二步是交换位置，第三步是提取出 A）。</p>
 <p>转换概率 $p_{ij}$ 可以认为是：$q(x_j \mid x_i)A(x_j, x_i) = min(q(x_j \mid x_i), q(x_i \mid x_j)\frac{\pi_{j}}{\pi_{i}})$.</p>
-<p>下面验证一下从状态 $i$ 转换到所有状态的概率之和是否等于 1：$\sum_{j}q(x_j \mid x_i)A(x_j, x_i) = min(q(x_j \mid x_i), q(x_i \mid x_j)\frac{\pi_{j}}{\pi_{i}})$。先假设 $q$ 是对称的，即 $q(x^{'} \mid x) = q(x \mid x^{'})$，则上面的等式等于 $\sum_{j}q(x_j \mid x_i)min(1, \frac{\pi_{j}}{\pi_{i}})$。由于 $\sum_{j}q(x_j \mid x_i) = 1$ 而 $min(1, \frac{\pi_{j}}{\pi_{i}}) \leq 1$，所以 $\sum_{j}q(x_j \mid x_i)A(x_j, x_i) \leq 1$，就是说转换到所有状态的概率之和并不一定等于 1。</p>
+<p>下面验证一下从状态 $i$ 转换到所有状态的概率之和是否等于 1：$\sum_{j}q(x_j \mid x_i)A(x_j, x_i) = \sum_{j}min(q(x_j \mid x_i), q(x_i \mid x_j)\frac{\pi_{j}}{\pi_{i}})$。先假设 $q$ 是对称的，即 $q(x^{'} \mid x) = q(x \mid x^{'})$，则上面的等式等于 $\sum_{j}q(x_j \mid x_i)min(1, \frac{\pi_{j}}{\pi_{i}})$。由于 $\sum_{j}q(x_j \mid x_i) = 1$ 而 $min(1, \frac{\pi_{j}}{\pi_{i}}) \leq 1$，所以 $\sum_{j}q(x_j \mid x_i)A(x_j, x_i) \leq 1$，就是说转换到所有状态的概率之和并不一定等于 1。</p>
 <p>上面的问题是因为 Meropolis-Hasting 算法中有一步没有提到，即如果新提议的 $x^{*}$ 没有被接受，则前一步的 $x$ 会被拷贝一份保留下来。所以：</p>
 <p>\begin{align}
 p_{ii} &amp; = q(x_i \mid x_i) + \sum_{j \neq i}q(x_j \mid q_i)(1 - min(1, \frac{\pi_{j}}{\pi_{i}})) \\
