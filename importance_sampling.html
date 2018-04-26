@@ -11784,9 +11784,9 @@ div#notebook {
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>采样的一个重要目的是获得函数 $f(x)$ 在分布 $p(x)$ 上的期望值，即：$\mathbb{E}[f] = \int{f(x)p(x)}dx$。</p>
-<p>通过对 $p(x)$ 采样可以得到近似值 $\mathbb{E}[f] \approx \sum_{l=1}^{L}{f(x^{(l)})}$ 。</p>
+<p>通过对 $p(x)$ 采样可以得到近似值 $\mathbb{E}[f] \approx \frac{1}{L}\sum_{l=1}^{L}{f(x^{(l)})}$ 。</p>
 <p>如果 $p(x)$ 不容易采样，一个替代方法就是对一个已知（容易）的分布 $q(x)$ 采样，然后根据 $p(x^{(l)})$ 和 $q(x^{(l)})$ 的比值调整每个样本的权重。</p>
-<p>具体表达式是这样的：$\mathbb{E}[f] = \int{f(x)p(x)}dx = \int{f(x)\frac{p(x)}{q(x)}q(x)}dx \approx \frac{1}{L}\sum_{l=1}^{L}{\frac{p(x^{(l)})}{q(x^{(l)})}f(x^{(l)})}$，其中 L 个样本是从 $q(x)$ 采样得出的。</p>
+<p>具体表达式是这样的：$\mathbb{E}[f] = \int{f(x)p(x)}dx = \int{f(x)\frac{p(x)}{q(x)}q(x)}dx \approx \frac{1}{L}\sum_{l=1}^{L}{\frac{p(x^{(l)})}{q(x^{(l)})}f(x^{(l)})}$，其中 $L$ 个样本是从 $q(x)$ 采样得出的。</p>
 <p>其中 $r^{(l)}=\frac{p(x^{(l)})}{q(x^{(l)})}$ 是权重，体现了样本的重要性。</p>
 
 </div>
