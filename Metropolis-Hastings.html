@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head><meta charset="utf-8" />
-<title>Metropolis-Hasting</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
+<title>Metropolis-Hastings</title><script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 <style type="text/css">
@@ -11775,7 +11775,7 @@ div#notebook {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1 id="Metropolis-Hasting-Algorithm">Metropolis-Hasting Algorithm<a class="anchor-link" href="#Metropolis-Hasting-Algorithm">&#182;</a></h1><p>接受/拒绝采样和重要性采样应用在高维（变量多的）分布上的时候效率比较低。这种情况下可以使用马可夫链蒙特卡洛（Markov Chain Monte Carlo）采样方法，简称 MCMC。</p>
+<h1 id="Metropolis-Hastings-Algorithm">Metropolis-Hastings Algorithm<a class="anchor-link" href="#Metropolis-Hastings-Algorithm">&#182;</a></h1><p>接受/拒绝采样和重要性采样应用在高维（变量多的）分布上的时候效率比较低。这种情况下可以使用马可夫链蒙特卡洛（Markov Chain Monte Carlo）采样方法，简称 MCMC。</p>
 
 </div>
 </div>
@@ -11838,8 +11838,8 @@ $$
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Meropolis-Hasting-&#31639;&#27861;">Meropolis-Hasting &#31639;&#27861;<a class="anchor-link" href="#Meropolis-Hasting-&#31639;&#27861;">&#182;</a></h2><p>上面提到，使用 MCMC 方法对目标分布采样的主要工作是设计一个状态转换过程 $p_{ij}$，使得 <strong>detailed balance</strong> 条件得到满足：$\pi_{i}p_{ij} = \pi_{j}p_{ji}$，$\pi$ 是目标分布。</p>
-<p>Metropolis-Hasting 算法的方案是：使用一个已知的条件分布 $q(x^{*} \mid x)$ 作为提议分布（proposal distribution），然后新样本的接受概率为</p>
+<h2 id="Meropolis-Hastings-&#31639;&#27861;">Meropolis-Hastings &#31639;&#27861;<a class="anchor-link" href="#Meropolis-Hastings-&#31639;&#27861;">&#182;</a></h2><p>上面提到，使用 MCMC 方法对目标分布采样的主要工作是设计一个状态转换过程 $p_{ij}$，使得 <strong>detailed balance</strong> 条件得到满足：$\pi_{i}p_{ij} = \pi_{j}p_{ji}$，$\pi$ 是目标分布。</p>
+<p>Metropolis-Hastings 算法的方案是：使用一个已知的条件分布 $q(x^{*} \mid x)$ 作为提议分布（proposal distribution），然后新样本的接受概率为</p>
 <p>$$
 A(x^{*}, x^{(t)}) = min(1, \frac{\widetilde{\pi}(x^{*})q(x^{(t)} \mid x^{*})}{\widetilde{\pi}(x^{(t)})q(x^{*} \mid x^{(t)})})
 $$
@@ -11853,7 +11853,7 @@ $$
 （第一步是带入 A，第二步是交换位置，第三步是提取出 A）。</p>
 <p>转换概率 $p_{ij}$ 可以认为是：$q(x_j \mid x_i)A(x_j, x_i) = min(q(x_j \mid x_i), q(x_i \mid x_j)\frac{\pi_{j}}{\pi_{i}})$.</p>
 <p>下面验证一下从状态 $i$ 转换到所有状态的概率之和是否等于 1：$\sum_{j}q(x_j \mid x_i)A(x_j, x_i) = \sum_{j}min(q(x_j \mid x_i), q(x_i \mid x_j)\frac{\pi_{j}}{\pi_{i}})$。先假设 $q$ 是对称的，即 $q(x^{'} \mid x) = q(x \mid x^{'})$，则上面的等式等于 $\sum_{j}q(x_j \mid x_i)min(1, \frac{\pi_{j}}{\pi_{i}})$。由于 $\sum_{j}q(x_j \mid x_i) = 1$ 而 $min(1, \frac{\pi_{j}}{\pi_{i}}) \leq 1$，所以 $\sum_{j}q(x_j \mid x_i)A(x_j, x_i) \leq 1$，就是说转换到所有状态的概率之和并不一定等于 1。</p>
-<p>上面的问题是因为 Meropolis-Hasting 算法中有一步没有提到，即如果新提议的 $x^{*}$ 没有被接受，则前一步的 $x$ 会被拷贝一份保留下来。所以：</p>
+<p>上面的问题是因为 Meropolis-Hastings 算法中有一步没有提到，即如果新提议的 $x^{*}$ 没有被接受，则前一步的 $x$ 会被拷贝一份保留下来。所以：</p>
 <p>\begin{align}
 p_{ii} &amp; = q(x_i \mid x_i) + \sum_{j \neq i}q(x_j \mid q_i)(1 - min(1, \frac{\pi_{j}}{\pi_{i}})) \\
        &amp; = q(x_i \mid x_i) + \sum_{j \neq i}q(x_j \mid q_i)max(0, 1 - \frac{\pi_j}{\pi_i})
