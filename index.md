@@ -7,3 +7,4 @@
 - [吉布斯采样 (Gibbs Sampling)](Gibbs-Sampling.html)
 - [哈密尔顿蒙特卡洛采样方法 (Hamiltonian Monte Carlo)](Hamiltonian-Monte-Carlo.html)
 - [隐马可夫模型 (Hidden Markov Model)](Hidden-Markov-Model.html)
+- [隐马可夫模型的期望最大化算法 (EM for HMM)](HMM-EM.html)
